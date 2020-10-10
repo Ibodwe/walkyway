@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="signup_activity_left_margin">40dp</dimen>
+    <dimen name="signup_activity_right_margin">40dp</dimen>
+    <dimen name="signup_activity_default_text_size">14dp</dimen>
+    <dimen name="signup_activity_default_top_margin">15dp</dimen>
+
+</resources>

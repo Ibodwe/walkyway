@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailFieldLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/signup_activity_left_margin"
+        android:layout_marginRight="@dimen/signup_activity_right_margin"
+        android:layout_marginTop="100dp"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:helperText="이메일 형식이여야 합니다."
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconContentDescription="email"
+        app:startIconDrawable="@drawable/email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="이메일 "
+            android:inputType="textEmailAddress"
+            android:textSize="@dimen/signup_activity_default_text_size" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordFieldLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/signup_activity_default_top_margin"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:counterTextAppearance="@style/CounterTextAppearance"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:helperText="최소한 1개의 소문자, 대문자, 숫자를 포함한 8자리 이상"
+        app:helperTextEnabled="true"
+
+        android:layout_marginLeft="@dimen/signup_activity_left_margin"
+        android:layout_marginRight="@dimen/signup_activity_right_margin"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:layout_constraintEnd_toEndOf="@+id/emailFieldLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/emailFieldLayout"
+        app:layout_constraintTop_toBottomOf="@+id/emailFieldLayout"
+        app:startIconContentDescription="password"
+        app:startIconDrawable="@drawable/lock">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:text=""
+            android:textSize="@dimen/signup_activity_default_text_size" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:startIconContentDescription="password"
+        app:startIconDrawable="@drawable/lock"
+        app:endIconMode="password_toggle"
+        android:id="@+id/passwordCheckFieldLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/signup_activity_default_top_margin"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        app:layout_constraintStart_toStartOf="@+id/passwordFieldLayout"
+        android:layout_marginLeft="@dimen/signup_activity_left_margin"
+        android:layout_marginRight="@dimen/signup_activity_right_margin"
+        app:errorEnabled="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordFieldLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordCheckField"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:hint="비밀번호를 다시 입력해주세요."
+            android:textSize="@dimen/signup_activity_default_text_size" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nickNameFieldLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/signup_activity_default_top_margin"
+        app:layout_constraintStart_toStartOf="@+id/passwordCheckFieldLayout"
+        android:layout_marginLeft="@dimen/signup_activity_left_margin"
+        android:layout_marginRight="@dimen/signup_activity_right_margin"
+        app:counterMaxLength="8"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:helperTextEnabled="true"
+        app:counterEnabled="true"
+        app:errorEnabled="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordCheckFieldLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nickNameField"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:hint="닉네임"
+            android:textSize="@dimen/signup_activity_default_text_size" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/birthField"
+        android:inputType="text"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="@dimen/signup_activity_left_margin"
+        android:layout_marginRight="@dimen/signup_activity_right_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="생년월일"
+        android:text=""
+        android:textSize="@dimen/signup_activity_default_text_size"
+        app:layout_constraintTop_toBottomOf="@+id/nickNameFieldLayout" />
+
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/agreementMarketingCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="마케팅동의"
+        app:layout_constraintStart_toStartOf="@+id/birthField"
+        app:layout_constraintTop_toBottomOf="@+id/birthField" />
+
+    <Button
+        android:textColor="@color/white"
+        android:background="@drawable/signup_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/agreementMarketingCheckBox"
+        android:id="@+id/signupBtn"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/signup_activity_default_top_margin"
+        android:layout_marginLeft="@dimen/signup_activity_left_margin"
+        android:layout_marginRight="@dimen/signup_activity_right_margin"
+        android:text="회원가입" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
