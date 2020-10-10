@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".searchwalkway.search_main"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/btn_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recommand_button"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:text="테마"
+        android:textColor="#5D5D5D"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+    <Button
+        android:id="@+id/btn_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recommand_button"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:text="거리"
+        android:textColor="#5D5D5D"
+        tools:layout_editor_absoluteX="240dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+
+</LinearLayout>

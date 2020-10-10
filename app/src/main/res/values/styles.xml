@@ -12,7 +12,6 @@
     </style>
 
 
-
     <style name="defaultTestViewStyle" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/nanum_square_round_eb</item>
     </style>
@@ -20,7 +19,6 @@
     <style name="defaultTesButtonViewStyle" parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">@font/nanum_square_round_eb</item>
     </style>
-
 
 
     <!-- SplashTheme에 사용 할 actionBar 제거 테마 . -->
@@ -56,6 +54,15 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

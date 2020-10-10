@@ -5,5 +5,6 @@
     <dimen name="signup_activity_right_margin">40dp</dimen>
     <dimen name="signup_activity_default_text_size">14dp</dimen>
     <dimen name="signup_activity_default_top_margin">15dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>
