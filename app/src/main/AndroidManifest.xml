@@ -14,9 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".walkwaywalking.FinishWalkwayActivity"></activity>
-        <activity android:name=".walkwaywalking.StopWalkwayActivity" />
-        <activity android:name=".walkwaywalking.StartWalkwayActivity" />
+        <activity android:name=".walkingwalkway.FinishWalkwayActivity"></activity>
+        <activity android:name=".walkingwalkway.StopWalkwayActivity" />
+        <activity android:name=".walkingwalkway.StartWalkwayActivity" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
