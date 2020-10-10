@@ -14,10 +14,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".walkingwalkway.FinishWalkwayActivity"></activity>
         <activity android:name=".walkingwalkway.StopWalkwayActivity" />
         <activity android:name=".walkingwalkway.StartWalkwayActivity" />
 
+=======
+        <activity
+            android:name=".searchwalkway.search_main"
+            android:label="@string/title_activity_search_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        Ll
+        <activity android:name=".walkwaywalking.FinishWalkwayActivity"></activity>
+        <activity android:name=".walkwaywalking.StopWalkwayActivity" />
+        <activity android:name=".walkwaywalking.StartWalkwayActivity" />
+>>>>>>> 8c7c0f54fa49d543f183b2eb1a7b2385c765c051
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="3278e1057237737ede6f7b53202294a5" />

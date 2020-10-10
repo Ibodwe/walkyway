@@ -33,6 +33,6 @@ object RetrofitGenerator {
 
 
     fun login()  = retrofit.create(SignupModelInterface::class.java)
-
+   
 
 }
