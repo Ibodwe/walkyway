@@ -1,10 +1,7 @@
-package com.example.walkway.walkwaywalking
+package com.example.walkway.walkingwalkway
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.example.walkway.R
 
 class StopWalkwayActivity : AppCompatActivity() {

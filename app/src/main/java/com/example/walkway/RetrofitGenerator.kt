@@ -34,7 +34,11 @@ object RetrofitGenerator {
 
 
     fun login()  = retrofit.create(SignupModelInterface::class.java)
+<<<<<<< HEAD
     fun search() = retrofit.create(searchInterface::class.java)
     
+=======
+   
+>>>>>>> 9ecd2507043120dab82a917dc9b0abe16f702442
 
 }
