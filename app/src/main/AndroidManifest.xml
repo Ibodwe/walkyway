@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:name=".App"
@@ -14,12 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".searchwalkway.search_main"
             android:label="@string/title_activity_search_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
-        Ll
         <activity android:name=".walkwaywalking.FinishWalkwayActivity"></activity>
         <activity android:name=".walkwaywalking.StopWalkwayActivity" />
         <activity android:name=".walkwaywalking.StartWalkwayActivity" />
@@ -28,13 +29,15 @@
             android:value="3278e1057237737ede6f7b53202294a5" />
 
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".map.MainMapActivity" />
-        <activity android:name=".signup.LoginActivity">
+        <activity android:name=".map.MainMapActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".signup.LoginActivity">
+
         </activity>
     </application>
 

@@ -8,7 +8,7 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 
-interface SignupModelInterface{
+interface searchInterface{
 
     @Headers("Accept: application/json")
     @POST("/dev/api/v1/login")

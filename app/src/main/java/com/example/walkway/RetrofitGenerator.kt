@@ -2,6 +2,7 @@ package com.example.walkway
 
 
 import com.example.walkway.model.SignupModelInterface
+import com.example.walkway.model.searchInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -27,12 +28,13 @@ object RetrofitGenerator {
     val okHttpClient = builder.build()
 
     private val retrofit = Retrofit.Builder().client(okHttpClient)
-        .baseUrl("http://api.tingting.kr")
+        .baseUrl("https://efbnzvsbdh.execute-api.ap-northeast-2.amazonaws.com")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
 
     fun login()  = retrofit.create(SignupModelInterface::class.java)
-
+    fun search() = retrofit.create(searchInterface::class.java)
+    
 
 }

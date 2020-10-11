@@ -7,12 +7,13 @@
     android:background="@drawable/main_background"
     tools:context=".signup.LoginActivity">
 
-    <TextView
+    <EditText
         android:id="@+id/emailEditText"
         android:layout_width="300dp"
         android:layout_height="36dp"
         android:background="#FFFFFF"
-        android:text="TextView"
+        android:paddingLeft="10dp"
+        android:hint="walk@naver.com"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -27,7 +28,8 @@
         android:layout_height="36dp"
         android:layout_marginBottom="256dp"
         android:background="#FFFFFF"
-        android:ems="10"
+        android:paddingLeft="10dp"
+        android:hint="password Here"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/emailEditText"
@@ -36,27 +38,28 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="#BFDF70"
         android:fontFamily="@font/nanum_square_round_eb"
         android:text="로그인"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTextview"
         app:layout_constraintStart_toStartOf="@+id/passwordTextview"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextview" />
 
     <Button
         android:id="@+id/signUpBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
+        android:layout_marginBottom="128dp"
         android:background="#BFDF70"
         android:fontFamily="@font/nanum_square_round_eb"
         android:text="회원가입"
-        app:layout_constraintBottom_toBottomOf="@+id/login"
-        app:layout_constraintStart_toEndOf="@+id/login"
-        app:layout_constraintTop_toTopOf="@+id/login" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTextview"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toStartOf="@+id/login" />
 
     <TextView
         android:id="@+id/textView2"

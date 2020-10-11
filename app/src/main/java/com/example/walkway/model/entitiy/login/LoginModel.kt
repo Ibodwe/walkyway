@@ -1,10 +1,8 @@
-package com.example.walkway.model.login
+package com.example.walkway.model.entitiy.login
 
 import android.app.Activity
 import android.util.Log
 import com.example.walkway.RetrofitGenerator
-import com.example.walkway.model.entitiy.LoginRequest
-import com.example.walkway.model.entitiy.LoginResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +24,10 @@ class LoginModel{
         val loginRequest = LoginRequest(pw, email)
         val call = RetrofitGenerator.login().login(loginRequest)
 
+        Log.d("getToken",loginRequest.toString())
+
+
+
         call.enqueue(object : Callback<LoginResponse> {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
 
@@ -46,6 +48,7 @@ class LoginModel{
                 }
             }
         })
+
 
     }
 }
