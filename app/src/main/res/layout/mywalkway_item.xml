@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/myWalkWayImg"
+        android:layout_marginTop="20dp"
+        android:background="#aa0000"
+        android:layout_marginStart="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/myWalkwayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오전의 중랑천"
+        android:layout_marginStart="15dp"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/myWalkWayImg"
+        app:layout_constraintStart_toEndOf="@+id/myWalkWayImg"
+        app:layout_constraintTop_toTopOf="@+id/myWalkWayImg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

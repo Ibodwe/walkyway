@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".App"
@@ -15,39 +15,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-        <activity android:name=".walkingwalkway.FinishWalkwayActivity"></activity>
+        <activity
+            android:name=".map.MainMapActivity"
+            android:label="@string/title_activity_main_activitytt"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".walkingwalkway.FinishWalkwayActivity" />
         <activity android:name=".walkingwalkway.StopWalkwayActivity" />
         <activity android:name=".walkingwalkway.StartWalkwayActivity" />
-
-=======
->>>>>>> 9ecd2507043120dab82a917dc9b0abe16f702442
         <activity
             android:name=".searchwalkway.search_main"
             android:label="@string/title_activity_search_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".walkwaywalking.FinishWalkwayActivity"></activity>
-        <activity android:name=".walkwaywalking.StopWalkwayActivity" />
-        <activity android:name=".walkwaywalking.StartWalkwayActivity" />
->>>>>>> 8c7c0f54fa49d543f183b2eb1a7b2385c765c051
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="3278e1057237737ede6f7b53202294a5" />
 
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".map.MainMapActivity" >
+
+        <activity android:name=".signup.LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".signup.LoginActivity">
-
         </activity>
     </application>
 

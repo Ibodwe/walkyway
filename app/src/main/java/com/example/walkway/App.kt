@@ -2,9 +2,9 @@ package com.example.walkway
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin
+import com.amplifyframework.core.Amplify
 import com.kakao.sdk.common.KakaoSdk
 
 class App : Application() {
@@ -23,7 +23,8 @@ class App : Application() {
 
         KakaoSdk.init(this, "3278e1057237737ede6f7b53202294a5")
 
-
+   //     Amplify.addPlugin(AWSCognitoAuthPlugin())
+       // Amplify.configure(applicationContext)
 
     }
 }

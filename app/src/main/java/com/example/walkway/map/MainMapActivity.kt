@@ -2,13 +2,18 @@ package com.example.walkway.map
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.walkway.R
+import com.example.walkway.profile.ProfileActivity
 import kotlinx.android.synthetic.main.activity_main_map.*
 import net.daum.mf.map.api.MapCircle
 import net.daum.mf.map.api.MapPoint
@@ -32,7 +37,35 @@ class MainMapActivity : AppCompatActivity() {
 
         getMyLocation()
 
-        testBtn.bringToFront()
+
+        //frame layout에서 view를 앞으로 가져오는 역할
+        initView()
+
+        themeBtn.setOnClickListener {
+            themeBtn.isSelected = !themeBtn.isSelected
+
+        }
+
+        distanceBtn.setOnClickListener {
+            distanceBtn.isSelected = !distanceBtn.isSelected
+
+        }
+
+        hamburgerBtn.setOnClickListener {
+
+            if (!drawer.isDrawerOpen(Gravity.LEFT)) {
+                drawer.openDrawer(Gravity.LEFT) ;
+            }
+
+        }
+
+        myProfile.setOnClickListener{
+
+            drawer.closeDrawer(Gravity.LEFT)
+            startActivity(Intent(this, ProfileActivity::class.java))
+
+        }
+
 
 
     }
@@ -80,6 +113,15 @@ class MainMapActivity : AppCompatActivity() {
 
             getMyLocation()
         }
+
+    }
+
+    private fun initView(){
+
+        hamburgerBtn.bringToFront()
+        currentBtn.bringToFront()
+        themeBtn.bringToFront()
+        distanceBtn.bringToFront()
 
     }
 

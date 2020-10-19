@@ -16,9 +16,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.walkway.map.MainMapActivity
+import com.example.walkway.model.entitiy.login.LoginModel
+import com.example.walkway.model.signup.SignupModel
+import com.example.walkway.model.signup.SignupResponse
 import com.example.walkway.signup.SignUpService
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.login_activity.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -42,6 +46,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
     var isConditionPrpoer = false
     var isAgreementMarketingProper = false
 
+    var signupModel: SignupModel = SignupModel(this)
+
 
     val cal = Calendar.getInstance()
 
@@ -63,12 +69,10 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
 
         initWatcher()
 
-        birthField.setOnClickListener(this)
-        birthField.setOnFocusChangeListener(this)
-
         agreementMarketingCheckBox.setOnClickListener(this)
 
         signupBtn.setOnClickListener(this)
+
 
     }
 
@@ -97,24 +101,11 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
 
         when (v.id) {
 
-            R.id.birthField -> {
-
-                DatePickerDialog(
-                    this@SignUpActivity,
-                    dateSetListener,
-                    // set DatePickerDialog to point to today's date when it loads up
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)
-                ).show()
-
-            }
-
 
             R.id.signupBtn -> {
 
 
-                startActivity(Intent(this,MainMapActivity::class.java))
+                signUp()
 
             }
 
@@ -127,20 +118,13 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
 
     override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
 
-        if (v!!.getId() == R.id.birthField && actionId == EditorInfo.IME_ACTION_DONE) {
-
-            Toast.makeText(applicationContext, "test keyBoard", Toast.LENGTH_SHORT).show()
-        }
-
         return false
     }
 
 
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
 
-        when (v!!.id) {
 
-        }
     }
 
 
@@ -288,42 +272,35 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener, View.OnFocusCh
 
     fun checkSignupBtnIsEnable() {
 
-        signupBtn.isEnabled = isConditionPrpoer &&
+        signupBtn.isEnabled =
                 isEmailProper &&
                 isPasswordProper &&
                 isPasswordReProper &&
-                isNickNameProper &&
-                isBirthProper!! && isGenderProper != null
-    }
-
-    private fun updateDateInView() {
-        val myFormat = "yyyy/MM/dd" // mention the format you need
-        val sdf = SimpleDateFormat(myFormat, Locale.KOREA)
-
-        val currentTime = Calendar.getInstance()
-
-
-        cal.get(Calendar.YEAR)
-
-
-        //가입하는 사람의 생년월일이 100살 이하 14세 이하는 서버에서 로직 점검
-
-        if (currentTime.get(Calendar.YEAR) - 100 < cal.get(Calendar.YEAR)) {
-            birthField.setText(sdf.format(cal.getTime()))
-            isBirthProper = true
-
-            hideKeyboard()
-
-        } else {
-            Toast.makeText(applicationContext, "생년월일을 다시 선택 해주세요", Toast.LENGTH_SHORT).show()
-        }
-
-
+                isNickNameProper != null
     }
 
     fun hideKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(birthField.windowToken, 0)
+        //imm.hideSoftInputFromWindow(birthField.windowToken, 0)
     }
 
+
+    fun signUp (){
+
+        signupModel.Signup(emailField.text.toString(), passwordField.text.toString(), nickNameField.text.toString()){
+            isSuccess: Int, data: SignupResponse? ->
+
+            if(data!!.statusCode==200){
+
+                    val intent = Intent(this,MainMapActivity::class.java)
+                    startActivity(intent)
+
+
+            }else{
+
+                Toast.makeText(applicationContext,"회원가입 오류입니다.",Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
 }

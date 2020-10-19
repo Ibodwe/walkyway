@@ -129,28 +129,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/birthField"
-        android:inputType="text"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="@dimen/signup_activity_left_margin"
-        android:layout_marginRight="@dimen/signup_activity_right_margin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="생년월일"
-        android:text=""
-        android:textSize="@dimen/signup_activity_default_text_size"
-        app:layout_constraintTop_toBottomOf="@+id/nickNameFieldLayout" />
-
-
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/agreementMarketingCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="마케팅동의"
-        app:layout_constraintStart_toStartOf="@+id/birthField"
-        app:layout_constraintTop_toBottomOf="@+id/birthField" />
+        app:layout_constraintStart_toStartOf="@+id/emailFieldLayout"
+        app:layout_constraintTop_toBottomOf="@+id/nickNameFieldLayout" />
 
     <Button
         android:textColor="@color/white"
