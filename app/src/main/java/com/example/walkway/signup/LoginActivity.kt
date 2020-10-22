@@ -38,27 +38,30 @@ class LoginActivity : AppCompatActivity() {
 
     fun check(){
 
-        loginModel.Login(emailEditText.text.toString(),passwordTextview.text.toString()){
+        val intent = Intent(this,MainMapActivity::class.java)
+        startActivity(intent)
 
-                isSuccess: Int, data: LoginResponse? ->
-
-
-                if(data!!.statusCode==200){
-
-                    login.setOnClickListener {
-
-                        val intent = Intent(this,MainMapActivity::class.java)
-                        startActivity(intent)
-                    }
-
-                }else{
-
-                    Toast.makeText(applicationContext,"ID 또는 Password가 일치하지 않습니다.",Toast.LENGTH_SHORT).show()
-                }
-
-
-
-        }
+//        loginModel.Login(emailEditText.text.toString(),passwordTextview.text.toString()){
+//
+//                isSuccess: Int, data: LoginResponse? ->
+//
+//
+//                if(data!!.statusCode==200){
+//
+//                    login.setOnClickListener {
+//
+//                        val intent = Intent(this,MainMapActivity::class.java)
+//                        startActivity(intent)
+//                    }
+//
+//                }else{
+//
+//                    Toast.makeText(applicationContext,"ID 또는 Password가 일치하지 않습니다.",Toast.LENGTH_SHORT).show()
+//                }
+//
+//
+//
+//        }
 
     }
 }

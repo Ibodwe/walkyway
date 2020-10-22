@@ -37,13 +37,11 @@ class LoginModel{
                 call: Call<LoginResponse>,
                 response: Response<LoginResponse>
             ) {
-
+                //response --> 통신이 되지 않았다.
                 if(response.body()!=null){
                     Log.d("getToken",response.body().toString())
-
                     onResult(response.code(),response.body())
                 }else{
-
                     onResult(response.code(),null)
                 }
             }

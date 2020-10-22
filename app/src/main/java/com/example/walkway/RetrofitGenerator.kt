@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-
+//서버와 통신하는 라이브러리
 object RetrofitGenerator {
 
     val builder = OkHttpClient.Builder().readTimeout(30, TimeUnit.SECONDS)

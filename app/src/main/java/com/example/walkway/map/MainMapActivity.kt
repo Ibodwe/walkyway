@@ -15,16 +15,17 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.walkway.R
 import com.example.walkway.profile.ProfileActivity
 import kotlinx.android.synthetic.main.activity_main_map.*
+import net.daum.android.map.coord.MapCoord
 import net.daum.mf.map.api.MapCircle
+import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView
 
 
-class MainMapActivity : AppCompatActivity() {
+class MainMapActivity : AppCompatActivity(), MapView.POIItemEventListener {
 
 
     lateinit var mapView : MapView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,11 +33,13 @@ class MainMapActivity : AppCompatActivity() {
 
         mapView = MapView(this)
 
+        mapView.setPOIItemEventListener(this)
 
         map_view.addView(mapView)
 
         getMyLocation()
 
+        addMarker()
 
         //frame layout에서 view를 앞으로 가져오는 역할
         initView()
@@ -70,8 +73,34 @@ class MainMapActivity : AppCompatActivity() {
 
     }
 
+    override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {
 
+    }
 
+    override fun onCalloutBalloonOfPOIItemTouched(
+        p0: MapView?,
+        p1: MapPOIItem?,
+        p2: MapPOIItem.CalloutBalloonButtonType?
+    ) {
+
+    }
+
+    override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
+
+    }
+
+    override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
+
+        //여기에 마커 선택 했을 때 구현
+
+        when(p1!!.itemName){
+
+            "1" ->{
+                Toast.makeText(applicationContext,"qwtqwt",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
 
     //현재위치 가져오기
     fun getMyLocation() {
@@ -98,6 +127,41 @@ class MainMapActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION
                 ,Manifest.permission.ACCESS_COARSE_LOCATION), 200)
         }
+
+    }
+
+
+    fun addMarker(){
+
+
+        val marker  = MapPOIItem()
+
+        marker.itemName = "testMarker"
+        marker.tag = 0
+
+
+
+
+        if(ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED
+            && ActivityCompat.checkSelfPermission(applicationContext,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_DENIED){
+
+            val locationManager =  getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+
+            val a = MapPoint.mapPointWithGeoCoord(location!!.latitude, location!!.longitude)
+            marker.mapPoint = a
+
+            marker.setMarkerType(MapPOIItem.MarkerType.BluePin)
+            marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin)
+
+
+            mapView.addPOIItem(marker);
+
+
+        }
+
+
 
     }
 
