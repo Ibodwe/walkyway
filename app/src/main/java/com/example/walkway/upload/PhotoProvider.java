@@ -1,4 +1,4 @@
-package com.example.walkway.model.upload;
+package com.example.walkway.upload;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;

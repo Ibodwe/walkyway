@@ -108,7 +108,7 @@ public class ImgUploadActivity  extends AppCompatActivity implements View.OnClic
 // Amazon Cognito 인증 공급자를 초기화합니다
         CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
-                "ap-northeast-2:8c082547-7189-4058-9fc6-3bd3d7a2464a", // 자격 증명 풀 ID
+                "ap-northeast-2:", // 자격 증명 풀 ID
                 Regions.AP_NORTHEAST_2 // 리전
         );
 

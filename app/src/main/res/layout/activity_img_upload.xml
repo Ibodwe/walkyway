@@ -4,6 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".model.upload.ImgUploadActivity">
+    tools:context=".upload.ImgUploadActivity">
+
+    <ImageView
+        android:id="@+id/imageview1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="111dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toTopOf="@+id/selectBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/selectBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="84dp"
+        android:text="이미지 선택"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/uploadBtn"
+        app:layout_constraintTop_toBottomOf="@+id/imageview1" />
+
+    <Button
+        android:id="@+id/uploadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="서버로 업로드"
+        app:layout_constraintBaseline_toBaselineOf="@+id/selectBtn"
+        app:layout_constraintEnd_toStartOf="@+id/selectBtn"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
