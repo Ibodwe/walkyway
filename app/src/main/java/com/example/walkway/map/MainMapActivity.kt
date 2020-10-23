@@ -70,6 +70,15 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             showthemeAlert()
         }
 
+        hanBtn.setOnClickListener {
+            hanBtn.isSelected = !hanBtn.isSelected
+            showhanAlert()
+        }
+
+        foodBtn.setOnClickListener {
+            foodBtn.isSelected = !foodBtn.isSelected
+            showthemeAlert()
+        }
         // 거리 버튼 클릭
         // 원래는 핀 버튼 클릭 시 진행해야하는 과정을 거리 버튼으로 대신함
         distanceBtn.setOnClickListener {
@@ -303,7 +312,6 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         var theme_date_state = false
 
         view.theme_entire.setOnClickListener{
-            Toast.makeText(this, "전체 체크", Toast.LENGTH_SHORT).show()
             if(theme_entire_state == false){
                 theme_entire_state= true
             }
@@ -382,11 +390,51 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             //가져온 지도의 출발점 목록을 핀으로 꼽는 프론트 함수 호출 필요함 (loop 돌려야함)
 
 
-            //getStartPoint()
+            getStartPoint1()
+            getStartPoint2()
+            getStartPoint3()
 
-            //alertDialog.dismiss()
-
+            alertDialog.dismiss()
+            themeBtn.setVisibility(View.INVISIBLE);
+            distanceBtn.setVisibility(View.INVISIBLE);
         }
+
+    } // 다미 theme select 한 함수
+
+    private fun showhanAlert(){
+        val builder = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.activity_choose_walkway,null)
+        val alertDialog = AlertDialog.Builder(this)
+            .create()
+        alertDialog.setView(view)
+        alertDialog.show()
+        val han_select = view.findViewById<Button>(R.id.hanChooseBtn)
+
+
+        han_select.setOnClickListener{
+            getWalkwayPath_1()
+            hanBtn.isSelected = !hanBtn.isSelected
+            //check()
+
+            alertDialog.dismiss()
+
+//
+//            btn1 = (Button) findbyViewId(R.id.button1); // 버튼이 btn1 이라면,
+//            bt1.setVisibility(View.VISIBLE); // 화면에 보이게 한다.
+
+            foodBtn.setVisibility(View.INVISIBLE); // 화면에 안보이게 한다.
+            hanBtn.setVisibility(View.INVISIBLE);
+            val view = layoutInflater.inflate(R.layout.activity_start_walkway,null)
+            val startbtn = view.findViewById<Button>(R.id.start)
+
+            startBtn.setVisibility(View.VISIBLE);
+            startBtn.setOnClickListener() {
+                startBtn.setVisibility(View.INVISIBLE);
+                stopBtn.setVisibility(View.VISIBLE);
+            }
+
+
+            }
 
     } // 다미 theme select 한 함수
 
@@ -437,11 +485,10 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         val locationManager =  getSystemService(LOCATION_SERVICE) as LocationManager
         val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-        val MARKER_POINT = MapPoint.mapPointWithGeoCoord(37.546363, 127.062802)
+        val MARKER_POINT = MapPoint.mapPointWithGeoCoord(37.510363, 127.067945)
         //                //37.546363, 127.062802
-
         val marker = MapPOIItem()
-        marker.itemName = "힐링"
+        marker.itemName = "한강"
         marker.tag = 0
         marker.mapPoint = MARKER_POINT
         marker.markerType = MapPOIItem.MarkerType.YellowPin // 기본으로 제공하는 BluePin 마커 모양.
@@ -450,7 +497,6 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
 
         mapView?.addPOIItem(marker)
-
 
     } else {
         ActivityCompat.requestPermissions(
@@ -486,11 +532,51 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             val locationManager =  getSystemService(Context.LOCATION_SERVICE) as LocationManager
             val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-            val MARKER_POINT = MapPoint.mapPointWithGeoCoord(37.546670, 127.062341)
+            val MARKER_POINT = MapPoint.mapPointWithGeoCoord(37.514238, 127.059948)
             //                //37.546363, 127.062802
 
             val marker = MapPOIItem()
-            marker.itemName = "힐링2"
+            marker.itemName = "봉은사"
+            marker.tag = 0
+            marker.mapPoint = MARKER_POINT
+            marker.markerType = MapPOIItem.MarkerType.BluePin // 기본으로 제공하는 BluePin 마커 모양.
+
+            marker.selectedMarkerType =
+                MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+            marker.selectedMarkerType =
+                MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+            mapView?.addPOIItem(marker)
+
+
+        } else {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ), 200
+            )
+        }
+    }
+    fun getStartPoint3() {
+
+        if (ActivityCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_DENIED
+            && ActivityCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_DENIED) {
+
+            val locationManager =  getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+            val MARKER_POINT = MapPoint.mapPointWithGeoCoord(37.509355, 127.058400)
+            //                //37.546363, 127.062802
+
+            val marker = MapPOIItem()
+            marker.itemName = "맛집"
             marker.tag = 0
             marker.mapPoint = MARKER_POINT
             marker.markerType = MapPOIItem.MarkerType.BluePin // 기본으로 제공하는 BluePin 마커 모양.
@@ -513,7 +599,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         }
     }
 
-    fun getWalkwayPath() {
+    fun getWalkwayPath_1() {
 
         if (ActivityCompat.checkSelfPermission(
                 applicationContext,
@@ -529,10 +615,117 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             polyline.lineColor = Color.argb(128, 51, 51, 204) // Polyline 컬러 지정
 
             // Polyline 좌표 지정
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.546375, 127.062752))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.546405, 127.063173))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.546462, 127.062961))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.546741, 127.062079))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510363, 127.067945))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.512520, 127.067714))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514058, 127.067484))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515384, 127.067241))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515689, 127.069724))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514127, 127.069977))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.513347, 127.070130))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.511716, 127.070382))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510701, 127.070417))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510363, 127.067945))
+
+
+            // Polyline 지도에 올리기
+            mapView?.addPolyline(polyline)
+
+            // 지도뷰의 중심좌표와 줌레벨을 Polyline이 모두 나오도록 조정
+            val mapPointBounds = MapPointBounds(polyline.mapPoints)
+            val padding = 100 // px
+
+            mapView?.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, padding))
+
+        } else {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ), 200
+            )
+        }
+
+    }
+
+
+    // 코엑스 근처 두번째 산책로 경로 가져오기
+    fun getWalkwayPath_2() {
+
+        if (ActivityCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_DENIED
+            && ActivityCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_DENIED) {
+
+            val polyline = MapPolyline()
+            polyline.tag = 1000
+            polyline.lineColor = Color.argb(128, 51, 51, 204) // Polyline 컬러 지정
+
+            // Polyline 좌표 지정
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514238, 127.059948))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.513928, 127.058094))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514120, 127.058024))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.513938, 127.056857))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514110, 127.056831))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514485, 127.057259))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514525, 127.057833))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515006, 127.057763))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515122, 127.057928))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515361, 127.057740))
+
+
+            // Polyline 지도에 올리기
+            mapView?.addPolyline(polyline)
+
+            // 지도뷰의 중심좌표와 줌레벨을 Polyline이 모두 나오도록 조정
+            val mapPointBounds = MapPointBounds(polyline.mapPoints)
+            val padding = 100 // px
+
+            mapView?.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, padding))
+
+        } else {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ), 200
+            )
+        }
+
+    }
+
+    // 산책로 세번째 경로 가져오기
+    fun getWalkwayPath_3() {
+
+        if (ActivityCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_DENIED
+            && ActivityCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_DENIED) {
+
+            val polyline = MapPolyline()
+            polyline.tag = 1000
+            polyline.lineColor = Color.argb(128, 51, 51, 204) // Polyline 컬러 지정
+
+            // Polyline 좌표 지정
+
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.509355, 127.058400))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.509133, 127.057692))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.509023, 127.057305))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.509755, 127.056919))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510324, 127.056702))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.511086, 127.056408))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.511185, 127.056789))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.511362, 127.057346))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510835, 127.057672))
+            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.509355, 127.058400))
+
 
             // Polyline 지도에 올리기
             mapView?.addPolyline(polyline)
