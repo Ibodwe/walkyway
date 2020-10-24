@@ -82,20 +82,20 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
         // 거리 버튼 클릭
         // 원래는 핀 버튼 클릭 시 진행해야하는 과정을 거리 버튼으로 대신함
-        distanceBtn.setOnClickListener {
-            distanceBtn.isSelected = !distanceBtn.isSelected
-
-            themeBtn.setVisibility(View.INVISIBLE); // 화면에 안보이게 한다.
-            distanceBtn.setVisibility(View.INVISIBLE);
-            val view = layoutInflater.inflate(R.layout.activity_start_walkway, null)
-            val startbtn = view.findViewById<Button>(R.id.start)
-
-            startBtn.setVisibility(View.VISIBLE);
-            startBtn.setOnClickListener() {
-                startBtn.setVisibility(View.INVISIBLE);
-                stopBtn.setVisibility(View.VISIBLE);
-            }
-        }
+//        distanceBtn.setOnClickListener {
+//            distanceBtn.isSelected = !distanceBtn.isSelected
+//
+//            themeBtn.setVisibility(View.INVISIBLE); // 화면에 안보이게 한다.
+//            distanceBtn.setVisibility(View.INVISIBLE);
+//            val view = layoutInflater.inflate(R.layout.activity_start_walkway, null)
+//            val startbtn = view.findViewById<Button>(R.id.start)
+//
+//            startBtn.setVisibility(View.VISIBLE);
+//            startBtn.setOnClickListener() {
+//                startBtn.setVisibility(View.INVISIBLE);
+//                stopBtn.setVisibility(View.VISIBLE);
+//            }
+//        }
 
         // 산책 중단 버튼을 누르면 "산책을 중단하시겠습니까?" alert 창이 뜬다.
         stopBtn.setOnClickListener {
@@ -387,7 +387,6 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
             alertDialog.dismiss()
             themeBtn.setVisibility(View.INVISIBLE);
-            distanceBtn.setVisibility(View.INVISIBLE);
         }
 
     } // 다미 theme select 한 함수
@@ -782,7 +781,6 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         hamburgerBtn.bringToFront()
         currentBtn.bringToFront()
         themeBtn.bringToFront()
-        distanceBtn.bringToFront()
 
     }
 
@@ -808,7 +806,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             return
         when(p1.itemName){
 
-            "봉은사" ->{
+            "한강" ->{
                 showDialog1()
                 /*
                 * 모델 --> 저
@@ -817,7 +815,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
                 * */
             }
 
-            "한강" ->{
+            "봉은사" ->{
                 showDialog2()
             }
 
@@ -837,8 +835,15 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         alertDialog.show()
 
 
-        DurationView.setText("소요시간: 35")
-        WalkwayReviewView.setText("한줄평: 와 너무 좋았어요")
+        view.WalkwayName.setText("한강을 거닐어요")
+        view.DurationView.setText("소요시간: 40")
+        view.WalkwayReviewView.setText("한줄평: 힐링하기 좋은 한강, 커플천국 솔로지옥")
+        view.walkway_distance.setText("거리: 3km")
+
+        //view.ProfileImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png")
+        //view.WalkwayImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/han.png")
+
+
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
             getWalkwayPath_1()
@@ -852,10 +857,16 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         alertDialog.setView(view)
         alertDialog.show()
 
+        view.WalkwayName.setText("봉은사를 거닐어요")
+        view.DurationView.setText("소요시간: 50")
+        view.WalkwayReviewView.setText("한줄평: 마음과 생각을 비워봐요")
+        view.walkway_distance.setText("거리: 4km")
+        //view.ProfileImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png")
+        //view.WalkwayImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/bong.png")
 
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
-            getWalkwayPath_1()
+            getWalkwayPath_2()
         }
     }
 
@@ -867,9 +878,17 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         alertDialog.show()
 
 
+        view.WalkwayName.setText("코엑스 식도락락")
+        view.DurationView.setText("소요시간: 30")
+        view.WalkwayReviewView.setText("한줄평: 코엑스 주변 맛집 추천")
+        view.walkway_distance.setText("거리: 2km")
+        //ProfileImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png")
+        //WalkwayImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/bong.png")
+
+
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
-            getWalkwayPath_1()
+            getWalkwayPath_3()
         }
     }
 
