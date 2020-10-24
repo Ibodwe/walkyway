@@ -43,7 +43,7 @@
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="6c923521f7ecba5550136d884337727e" />
+            android:value="3278e1057237737ede6f7b53202294a5" />
 
         <provider
             android:name=".upload.PhotoProvider"

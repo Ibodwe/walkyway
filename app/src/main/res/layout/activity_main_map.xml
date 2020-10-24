@@ -70,28 +70,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="608dp" />
 
-            <Button
-                android:background="@drawable/btn_background"
-                android:layout_gravity="bottom|right"
-                android:layout_marginBottom="50dp"
-                android:layout_marginRight="100dp"
-                android:id="@+id/foodBtn"
-                android:textColor="#000000"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="맛집" />
-
-            <Button
-                android:background="@drawable/btn_background"
-                android:id="@+id/hanBtn"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|left"
-                android:gravity="center"
-                android:textColor="@color/btn_color"
-                android:layout_marginBottom="50dp"
-                android:layout_marginLeft="100dp"
-                android:text="한강" />
 
             <LinearLayout
                 android:layout_width="match_parent"

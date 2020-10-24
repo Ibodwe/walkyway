@@ -20,6 +20,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.amazonaws.RequestClientOptions
 import com.example.walkway.R
 import com.example.walkway.model.search.SearchModel
 import com.example.walkway.model.search.SearchResponse
@@ -30,7 +31,7 @@ import kotlinx.android.synthetic.main.theme_select.view.*
 import net.daum.mf.map.api.*
 
 class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListener,
-    MapView.MapViewEventListener {
+    MapView.MapViewEventListener, MapView.POIItemEventListener {
 
     var SearchModel: SearchModel = SearchModel(this)
 
@@ -43,8 +44,11 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         //super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_map)
         //지도를 띄우자
+
+
         // java code
         mapView = MapView(this)
+        mapView!!.setPOIItemEventListener(this);
         mapViewContainer = findViewById<View>(R.id.map_view) as ViewGroup
         mapViewContainer!!.addView(mapView)
         mapView!!.setMapViewEventListener(this)
@@ -70,27 +74,11 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             showthemeAlert()
         }
 
-        hanBtn.setOnClickListener {
-            hanBtn.isSelected = !hanBtn.isSelected
-            showhanAlert()
 
-        }
-
-        foodBtn.setOnClickListener {
-            foodBtn.isSelected = !foodBtn.isSelected
-            showthemeAlert()
-        }
         // 거리 버튼 클릭
         // 원래는 핀 버튼 클릭 시 진행해야하는 과정을 거리 버튼으로 대신함
         distanceBtn.setOnClickListener {
             distanceBtn.isSelected = !distanceBtn.isSelected
-
-            //check()
-
-
-//
-//            btn1 = (Button) findbyViewId(R.id.button1); // 버튼이 btn1 이라면,
-//            bt1.setVisibility(View.VISIBLE); // 화면에 보이게 한다.
 
             themeBtn.setVisibility(View.INVISIBLE); // 화면에 안보이게 한다.
             distanceBtn.setVisibility(View.INVISIBLE);
@@ -371,6 +359,9 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
         theme_select.setOnClickListener {
             //theme 선택한 값 api 전
+
+            Log.e("MainMapActivity", "MapActivity사용" )
+
             theme_select_walkway(
                 theme_entire_state,
                 theme_night_state,
@@ -408,17 +399,13 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
         han_select.setOnClickListener {
             getWalkwayPath_1()
-            hanBtn.isSelected = !hanBtn.isSelected
+
             //check()
 
             alertDialog.dismiss()
 
-//
-//            btn1 = (Button) findbyViewId(R.id.button1); // 버튼이 btn1 이라면,
-//            bt1.setVisibility(View.VISIBLE); // 화면에 보이게 한다.
 
-            foodBtn.setVisibility(View.INVISIBLE); // 화면에 안보이게 한다.
-            hanBtn.setVisibility(View.INVISIBLE);
+
             val view = layoutInflater.inflate(R.layout.activity_start_walkway, null)
             val startbtn = view.findViewById<Button>(R.id.start)
 
@@ -443,6 +430,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         theme_animal_state: Boolean,
         theme_date_state: Boolean
     ) {
+        Log.e("MainMapActivity", "MapActivity사용222" )
 
         SearchModel.Search(
             theme_entire_state,
@@ -453,23 +441,22 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             theme_animal_state,
             theme_date_state
         ) { isSuccess: Int, data: SearchResponse? ->
+
+            Log.e("MainMapActivity", "MapActivity사용3333" )
+
             // 이 안으로 진입이 안됨 여기에다가 toast 넣어도 안띄워짐
             if (data!!.statusCode == 200) {
-                Toast.makeText(applicationContext, "서버가동성공", Toast.LENGTH_SHORT).show()
-                // 안뜸
-                //Toast.makeText(applicationContext,data.body,Toast.LENGTH_SHORT).show()
-                // 안뜸
+
+                for(i in 0 until data.body.message.size){
+                    data.body.message.get(i).walkway_point1
+                    data.body.message.get(i).walkway_point2
+                }
+
             } else {
                 Toast.makeText(applicationContext, "서버 오류입니다", Toast.LENGTH_SHORT).show()
             }
 
         }// theme_select_walkway 함수
-
-        fun getStartPoint() {
-
-
-        }
-
 
     }
     //다미 back-end 테마 lambda
@@ -495,7 +482,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         marker.itemName = "한강"
         marker.tag = 0
         marker.mapPoint = MARKER_POINT
-        marker.markerType = MapPOIItem.MarkerType.YellowPin // 기본으로 제공하는 BluePin 마커 모양.
+        marker.markerType = MapPOIItem.MarkerType.BluePin // 기본으로 제공하는 BluePin 마커 모양.
 
         marker.selectedMarkerType =
             MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
@@ -511,16 +498,6 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         )
     }
 
-    fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
-        //여기에 마커 선택 했을 때 구현
-        when (p1!!.itemName) {
-
-            "1" -> {
-                Toast.makeText(applicationContext, "qwtqwt", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-    }
 
     // 산책로 경로 가져오기
     fun getStartPoint2() {
@@ -557,8 +534,6 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
                 marker.mapPoint = MARKER_POINT
                 marker.markerType = MapPOIItem.MarkerType.BluePin // 기본으로 제공하는 BluePin 마커 모양.
 
-                marker.selectedMarkerType =
-                    MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
                 marker.selectedMarkerType =
                     MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
 
@@ -600,8 +575,6 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             marker.mapPoint = MARKER_POINT
             marker.markerType = MapPOIItem.MarkerType.BluePin // 기본으로 제공하는 BluePin 마커 모양.
 
-            marker.selectedMarkerType =
-                MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
             marker.selectedMarkerType =
                 MapPOIItem.MarkerType.RedPin // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
 
@@ -805,4 +778,51 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         distanceBtn.bringToFront()
 
     }
+
+    override fun onCalloutBalloonOfPOIItemTouched(p0: MapView?, p1: MapPOIItem?) {
+
+    }
+
+    override fun onCalloutBalloonOfPOIItemTouched(
+        p0: MapView?,
+        p1: MapPOIItem?,
+        p2: MapPOIItem.CalloutBalloonButtonType?
+    ) {
+
+    }
+
+    override fun onDraggablePOIItemMoved(p0: MapView?, p1: MapPOIItem?, p2: MapPoint?) {
+
+    }
+
+    override fun onPOIItemSelected(p0: MapView?, p1: MapPOIItem?) {
+
+        if(p1==null)
+            return
+        when(p1.itemName){
+
+            "봉은사" ->{
+                showDialog()
+            }
+
+            "한강" ->{
+                showDialog()
+            }
+
+            "맛집" -> {
+                showDialog()
+            }
+
+        }
+
+    }
+
+    fun showDialog(){
+        val view = layoutInflater.inflate(R.layout.activity_choose_walkway, null)
+        val alertDialog = AlertDialog.Builder(this)
+            .create()
+        alertDialog.setView(view)
+        alertDialog.show()
+    }
+
 }

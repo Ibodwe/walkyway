@@ -17,6 +17,7 @@ interface searchInterface{
 
     @GET("/dev/api/v1/login")
     fun login(@Body user : LoginRequest) : Call<LoginResponse>
+
     @POST("/dev/api/v1/walkway/search/theme")
     fun search(@Body user: SearchRequest) : Call<SearchResponse>
 
