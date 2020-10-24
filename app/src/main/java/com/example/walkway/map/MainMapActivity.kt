@@ -35,13 +35,15 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
     var SearchModel: SearchModel = SearchModel(this)
 
+    lateinit var hanPolyline : MapPolyline
+
     private val LOG_TAG = "MainMapActivity"
     private var mapView: MapView? = null
     private var mapViewContainer: ViewGroup? = null
     var REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_map)
         //지도를 띄우자
 
@@ -603,28 +605,28 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             ) != PackageManager.PERMISSION_DENIED
         ) {
 
-            val polyline = MapPolyline()
-            polyline.tag = 1000
-            polyline.lineColor = Color.argb(128, 51, 51, 204) // Polyline 컬러 지정
+            hanPolyline= MapPolyline()
+            hanPolyline.tag = 1000
+            hanPolyline.lineColor = Color.argb(128, 51, 51, 204) // Polyline 컬러 지정
 
             // Polyline 좌표 지정
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510363, 127.067945))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.512520, 127.067714))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514058, 127.067484))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515384, 127.067241))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515689, 127.069724))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514127, 127.069977))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.513347, 127.070130))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.511716, 127.070382))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510701, 127.070417))
-            polyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510363, 127.067945))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510363, 127.067945))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.512520, 127.067714))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514058, 127.067484))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515384, 127.067241))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.515689, 127.069724))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.514127, 127.069977))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.513347, 127.070130))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.511716, 127.070382))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510701, 127.070417))
+            hanPolyline.addPoint(MapPoint.mapPointWithGeoCoord(37.510363, 127.067945))
 
 
             // Polyline 지도에 올리기
-            mapView?.addPolyline(polyline)
+            mapView?.addPolyline(hanPolyline)
 
             // 지도뷰의 중심좌표와 줌레벨을 Polyline이 모두 나오도록 조정
-            val mapPointBounds = MapPointBounds(polyline.mapPoints)
+            val mapPointBounds = MapPointBounds(hanPolyline.mapPoints)
             val padding = 100 // px
 
             mapView?.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, padding))
@@ -758,12 +760,12 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         registerStarRange.setOnClickListener {
             // 백엔드에서 별점 등록하는 API 호출해야함
 
+            mapView?.removePolyline(hanPolyline)
+
             alertDialog.dismiss()
             stopBtn.setVisibility(View.INVISIBLE);
             themeBtn.setVisibility(View.VISIBLE);
         }
-
-
 
         alertDialog.setView(view)
         alertDialog.show()
@@ -803,6 +805,11 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
             "봉은사" ->{
                 showDialog()
+                /*
+                * 모델 --> 저
+                *
+                *
+                * */
             }
 
             "한강" ->{
