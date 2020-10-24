@@ -855,7 +855,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
-            getWalkwayPath_1()
+            getWalkwayPath_2()
         }
     }
 
@@ -869,7 +869,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
-            getWalkwayPath_1()
+            getWalkwayPath_3()
         }
     }
 

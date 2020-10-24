@@ -17,7 +17,6 @@
         app:srcCompat="@drawable/checkwaycolor" />
 
     <ImageView
-
         android:id="@+id/imageView2"
         android:layout_width="29dp"
         android:layout_height="44dp"
@@ -26,8 +25,8 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toStartOf="@+id/WalkwayName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/backgroundColor"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="@+id/backgroundColor"/>
+
 
     <ImageView
         android:id="@+id/imageView4"
@@ -37,8 +36,7 @@
         android:layout_marginEnd="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/DurationView"
-        app:layout_constraintTop_toTopOf="@+id/backgroundColor"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toTopOf="@+id/backgroundColor" />
 
     <TextView
         android:id="@+id/WalkwayName"

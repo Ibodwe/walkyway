@@ -14,9 +14,7 @@ class SearchModel{
 
     }
 
-//    class Search(theme_entire: Boolean, theme_night: Boolean, theme_morning: Boolean, theme_environment: Boolean, theme_food: Boolean, theme_animal: Boolean, theme_date: Boolean, function: (Int, SearchResponse?) -> Unit) {
-//x
-//    }
+
 
     fun Search(
         theme_entire: Boolean,
