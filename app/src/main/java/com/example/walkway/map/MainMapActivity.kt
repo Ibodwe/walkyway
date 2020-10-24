@@ -26,6 +26,7 @@ import com.example.walkway.model.search.SearchModel
 import com.example.walkway.model.search.SearchResponse
 import com.example.walkway.profile.ProfileActivity
 import com.example.walkway.walkingwalkway.StartWalkwayActivity
+import kotlinx.android.synthetic.main.activity_choose_walkway.view.*
 import kotlinx.android.synthetic.main.activity_main_map.*
 import kotlinx.android.synthetic.main.theme_select.view.*
 import net.daum.mf.map.api.*
@@ -631,6 +632,8 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
             mapView?.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, padding))
 
+            stopBtn.visibility = View.VISIBLE
+
         } else {
             ActivityCompat.requestPermissions(
                 this, arrayOf(
@@ -830,6 +833,15 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             .create()
         alertDialog.setView(view)
         alertDialog.show()
+
+
+        view.hanChooseBtn.setOnClickListener {
+            alertDialog.dismiss()
+            getWalkwayPath_1()
+
+        }
+
+
     }
 
 }
