@@ -26,8 +26,10 @@ import com.example.walkway.model.search.SearchModel
 import com.example.walkway.model.search.SearchResponse
 import com.example.walkway.profile.ProfileActivity
 import com.example.walkway.walkingwalkway.StartWalkwayActivity
+import kotlinx.android.synthetic.main.activity_choose_walkway.*
 import kotlinx.android.synthetic.main.activity_choose_walkway.view.*
 import kotlinx.android.synthetic.main.activity_main_map.*
+import kotlinx.android.synthetic.main.activity_main_map.drawer
 import kotlinx.android.synthetic.main.theme_select.view.*
 import net.daum.mf.map.api.*
 
@@ -807,7 +809,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         when(p1.itemName){
 
             "봉은사" ->{
-                showDialog()
+                showDialog1()
                 /*
                 * 모델 --> 저
                 *
@@ -816,18 +818,34 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             }
 
             "한강" ->{
-                showDialog()
+                showDialog2()
             }
 
             "맛집" -> {
-                showDialog()
+                showDialog3()
             }
 
         }
 
     }
 
-    fun showDialog(){
+    fun showDialog1(){
+        val view = layoutInflater.inflate(R.layout.activity_choose_walkway, null)
+        val alertDialog = AlertDialog.Builder(this)
+            .create()
+        alertDialog.setView(view)
+        alertDialog.show()
+
+
+        DurationView.setText("소요시간: 35")
+        WalkwayReviewView.setText("한줄평: 와 너무 좋았어요")
+        view.hanChooseBtn.setOnClickListener {
+            alertDialog.dismiss()
+            getWalkwayPath_1()
+        }
+    }
+
+    fun showDialog2(){
         val view = layoutInflater.inflate(R.layout.activity_choose_walkway, null)
         val alertDialog = AlertDialog.Builder(this)
             .create()
@@ -838,10 +856,21 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
             getWalkwayPath_1()
-
         }
+    }
+
+    fun showDialog3(){
+        val view = layoutInflater.inflate(R.layout.activity_choose_walkway, null)
+        val alertDialog = AlertDialog.Builder(this)
+            .create()
+        alertDialog.setView(view)
+        alertDialog.show()
 
 
+        view.hanChooseBtn.setOnClickListener {
+            alertDialog.dismiss()
+            getWalkwayPath_1()
+        }
     }
 
 }
