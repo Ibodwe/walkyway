@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:layout_width="200dp"
+    android:layout_height="250dp"
+    android:orientation="vertical" >
+
+    <CheckBox
+        android:id="@+id/theme_entire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="#61B536"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:text="주변" />
+    <CheckBox
+        android:id="@+id/theme_night"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:buttonTint="#61B536"
+        android:text="주간" />
+    <CheckBox
+        android:id="@+id/theme_morning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:buttonTint="#61B536"
+        android:text="야간" />
+
+    <CheckBox
+        android:id="@+id/theme_environment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:buttonTint="#61B536"
+        android:text="풍경" />
+
+    <CheckBox
+        android:id="@+id/theme_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:buttonTint="#61B536"
+        android:text="식도락" />
+
+    <CheckBox
+        android:id="@+id/theme_animal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:buttonTint="#61B536"
+        android:text="반려견" />
+    <CheckBox
+        android:id="@+id/theme_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:buttonTint="#61B536"
+        android:text="데이트" />
+
+    <Button
+        android:id="@+id/btn_theme_select"
+        android:layout_width="170dp"
+        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        android:background="@drawable/btn_select"
+        android:fontFamily="@font/nanum_square_round_eb"
+        android:onClick="onClick"
+        android:text="select"
+        android:textColor="#FFFFFF"
+        />
+
+
+</LinearLayout>
