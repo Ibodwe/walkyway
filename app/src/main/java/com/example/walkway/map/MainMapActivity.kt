@@ -793,6 +793,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         hamburgerBtn.bringToFront()
         currentBtn.bringToFront()
         themeBtn.bringToFront()
+        toolbar.bringToFront()
 
     }
 

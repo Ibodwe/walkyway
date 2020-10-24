@@ -21,15 +21,25 @@
             android:layout_height="match_parent">
 
             <androidx.appcompat.widget.Toolbar
-
+                android:id="@+id/toolbar"
+                android:background="#61B536"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/white"
                     android:text="오늘의 산책"
                     android:textSize="20dp"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/hamburgerBtn"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/hamburger"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             </androidx.appcompat.widget.Toolbar>
@@ -110,13 +120,7 @@
                 android:layout_height="wrap_content"/>
 
 
-            <ImageView
-                android:id="@+id/hamburgerBtn"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/hamburger"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+
         </FrameLayout>
 
     </RelativeLayout>
