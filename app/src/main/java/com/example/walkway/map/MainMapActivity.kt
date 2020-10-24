@@ -102,6 +102,12 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 //            }
 //        }
 
+        startBtn.setOnClickListener() {
+            startBtn.setVisibility(View.INVISIBLE);
+            stopBtn.setVisibility(View.VISIBLE);
+        }
+
+
         // 산책 중단 버튼을 누르면 "산책을 중단하시겠습니까?" alert 창이 뜬다.
         stopBtn.setOnClickListener {
             showStarRangeAlert()
@@ -638,7 +644,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
 
             mapView?.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, padding))
 
-            stopBtn.visibility = View.VISIBLE
+            //stopBtn.visibility = View.VISIBLE
 
         } else {
             ActivityCompat.requestPermissions(
@@ -769,7 +775,8 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         registerStarRange.setOnClickListener {
             // 백엔드에서 별점 등록하는 API 호출해야함
 
-            mapView?.removePolyline(hanPolyline)
+            // 경로 회수 시 앱 꺼짐
+            //mapView?.removePolyline(hanPolyline)
 
             alertDialog.dismiss()
             stopBtn.setVisibility(View.INVISIBLE);
@@ -851,6 +858,7 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
             getWalkwayPath_1()
+            startBtn.setVisibility(View.VISIBLE)
         }
     }
 
@@ -870,6 +878,8 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
             getWalkwayPath_2()
+            startBtn.setVisibility(View.VISIBLE)
+
         }
     }
 
@@ -892,6 +902,8 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
             getWalkwayPath_3()
+            startBtn.setVisibility(View.VISIBLE)
+
         }
     }
 
