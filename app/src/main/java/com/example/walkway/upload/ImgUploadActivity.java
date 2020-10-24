@@ -35,6 +35,8 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.example.walkway.R;
+import com.example.walkway.profile.ProfileActivity;
+import com.example.walkway.walkingwalkway.StartWalkwayActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -47,7 +49,7 @@ import java.io.IOException;
 // 이미지 업로드 액티비티
 public class ImgUploadActivity  extends AppCompatActivity implements View.OnClickListener {
     private String TAG = "ImgUploadActivity";
-
+    public static final int sub = 1001;
 
     AmazonS3 s3;
     TransferUtility transferUtility;
@@ -134,6 +136,8 @@ public class ImgUploadActivity  extends AppCompatActivity implements View.OnClic
                         f.getName(),
                         f
                 );
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivityForResult(intent,sub);
                 break;
             case R.id.selectBtn:
                 selectImage();
@@ -423,7 +427,7 @@ public class ImgUploadActivity  extends AppCompatActivity implements View.OnClic
 
             Bitmap bmp = BitmapFactory.decodeStream(new FileInputStream(f), null, null);
             correctBmp = Bitmap.createBitmap(bmp, 0, 0, bmp.getWidth(), bmp.getHeight(), mat, true);
-
+            Toast.makeText(this, "불러오기에 성공했습니다", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(this, "불러오기에 실패했습니다", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "Failed to load", e);
