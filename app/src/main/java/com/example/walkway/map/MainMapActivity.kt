@@ -46,30 +46,22 @@ class MainMapActivity : AppCompatActivity(), MapView.POIItemEventListener {
 
         themeBtn.setOnClickListener {
             themeBtn.isSelected = !themeBtn.isSelected
-
         }
 
         distanceBtn.setOnClickListener {
             distanceBtn.isSelected = !distanceBtn.isSelected
-
         }
 
         hamburgerBtn.setOnClickListener {
-
             if (!drawer.isDrawerOpen(Gravity.LEFT)) {
                 drawer.openDrawer(Gravity.LEFT) ;
             }
-
         }
 
         myProfile.setOnClickListener{
-
             drawer.closeDrawer(Gravity.LEFT)
             startActivity(Intent(this, ProfileActivity::class.java))
-
         }
-
-
 
     }
 
@@ -138,8 +130,6 @@ class MainMapActivity : AppCompatActivity(), MapView.POIItemEventListener {
 
         marker.itemName = "testMarker"
         marker.tag = 0
-
-
 
 
         if(ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_DENIED

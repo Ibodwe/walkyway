@@ -32,9 +32,14 @@ object RetrofitGenerator {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+     val retrofitKaKao  =  Retrofit.Builder().client(okHttpClient)
+         .baseUrl("kakaomap://route")
+         .addConverterFactory(GsonConverterFactory.create())
+         .build()
+
 
     fun login()  = retrofit.create(SignupModelInterface::class.java)
-    fun search() = retrofit.create(searchInterface::class.java)
+    fun search() = retrofitKaKao.create(searchInterface::class.java)
 
 
 }
