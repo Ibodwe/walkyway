@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.LocationManager
+import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -21,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.amazonaws.RequestClientOptions
+import com.bumptech.glide.Glide
 import com.example.walkway.R
 import com.example.walkway.model.search.SearchModel
 import com.example.walkway.model.search.SearchResponse
@@ -30,6 +32,7 @@ import kotlinx.android.synthetic.main.activity_choose_walkway.*
 import kotlinx.android.synthetic.main.activity_choose_walkway.view.*
 import kotlinx.android.synthetic.main.activity_main_map.*
 import kotlinx.android.synthetic.main.activity_main_map.drawer
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 import kotlinx.android.synthetic.main.theme_select.view.*
 import net.daum.mf.map.api.*
 
@@ -46,6 +49,8 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
     var REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_map)
         //지도를 띄우자
@@ -839,9 +844,8 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         view.DurationView.setText("소요시간: 40")
         view.WalkwayReviewView.setText("한줄평: 힐링하기 좋은 한강, 커플천국 솔로지옥")
         view.walkway_distance.setText("거리: 3km")
-
-        //view.ProfileImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png")
-        //view.WalkwayImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/han.png")
+        Glide.with(applicationContext).load("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png").into(view.ProfileImage);
+        Glide.with(applicationContext).load("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/han.png").into(view.WalkwayImage);
 
 
         view.hanChooseBtn.setOnClickListener {
@@ -856,13 +860,12 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
             .create()
         alertDialog.setView(view)
         alertDialog.show()
-
         view.WalkwayName.setText("봉은사를 거닐어요")
         view.DurationView.setText("소요시간: 50")
         view.WalkwayReviewView.setText("한줄평: 마음과 생각을 비워봐요")
         view.walkway_distance.setText("거리: 4km")
-        //view.ProfileImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png")
-        //view.WalkwayImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/bong.png")
+        Glide.with(this).load("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png").into(ProfileImage);
+        Glide.with(this).load("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/bong.png").into(WalkwayImage);
 
         view.hanChooseBtn.setOnClickListener {
             alertDialog.dismiss()
@@ -882,8 +885,8 @@ class MainMapActivity() : AppCompatActivity(), MapView.CurrentLocationEventListe
         view.DurationView.setText("소요시간: 30")
         view.WalkwayReviewView.setText("한줄평: 코엑스 주변 맛집 추천")
         view.walkway_distance.setText("거리: 2km")
-        //ProfileImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png")
-        //WalkwayImage.setImageURI("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/bong.png")
+        //Glide.with(this).load("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/account_profile/na.png").into(ProfileImage);
+        //Glide.with(this).load("https://serverless-img-bucket.s3.ap-northeast-2.amazonaws.com/walkway_img/bong.png").into(WalkwayImage);
 
 
         view.hanChooseBtn.setOnClickListener {
